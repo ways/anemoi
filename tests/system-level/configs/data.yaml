@@ -5,3 +5,6 @@ static_data:
     branch: "{anemoi_branch}"
     files:
       - "tests/system-level/anemoi_test/configs/*"
+  meps_dataset_20220101:
+     type: link
+     source: "/perm/nor1427/meps_dataset_20220101"
