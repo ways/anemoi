@@ -1,0 +1,3 @@
+anemoi_command: "anemoi-datasets create"
+source_data:
+  MEPS_DATA_DIR: meps_dataset_20220101
