@@ -44,23 +44,21 @@ class CreateDatasetFamily(pf.AnchorFamily):
                     ) from e
 
                 dataset_cmd = task_config.get("anemoi_command", "anemoi-datasets create")
-                source_data = task_config.get("source_data", {})
-                create_dataset = DatasetTask(folder, config, dataset_cmd=dataset_cmd, source_data=source_data)
+                create_dataset = DatasetTask(folder, config, dataset_cmd=dataset_cmd)
                 check_dataset = DatasetCheck(folder, create_dataset.output_path)
                 create_dataset >> check_dataset
 
 
 class DatasetTask(pf.Task):
-    def __init__(self, name: str, suite_config: dict, dataset_cmd: str = "anemoi-datasets create", source_data: dict | None = None):
+    def __init__(self, name: str, suite_config: dict, dataset_cmd: str = "anemoi-datasets create"):
         config_file_path = STATIC_DATA_DIR / "datasets" / name / "dataset_config.yaml"
         self.output_path = RESULTS_DIR_DATASETS / (name + ".zarr")
 
-        exports = [f"export {var}=$DATA_DIR/{key}" for var, key in (source_data or {}).items()]
         create_command = dataset_cmd + f" {config_file_path} {self.output_path} --overwrite"
 
         super().__init__(
             name=name.replace("-", "_"),
-            script=[suite_config.tools.load("datasets_env"), *exports, create_command],
+            script=[suite_config.tools.load("datasets_env"), create_command],
         )
 
 
