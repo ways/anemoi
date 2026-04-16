@@ -170,7 +170,11 @@ diagnostics:
     callbacks: []
   log:
     mlflow:
-      enabled: False
+      enabled: false
+      _target_: anemoi.training.diagnostics.mlflow.logger.AnemoiMLflowLogger
+      offline: false
+      authentication: true
+      tracking_uri: null
 
 # =============================================================================
 # GRAPH — stretched grid, need data/hidden names for cross-references
