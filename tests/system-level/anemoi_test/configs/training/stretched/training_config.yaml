@@ -89,18 +89,18 @@ dataloader:
       data:
         dataset_config: ${dataloader.dataset_config}
         start: null
-        end: 2022-01-05
+        end: 2022-01-02
   validation:
     datasets:
       data:
         dataset_config: ${dataloader.dataset_config}
-        start: 2022-01-06
-        end: 2022-01-07
+        start: 2022-01-03
+        end: 2022-01-03
   test:
     datasets:
       data:
         dataset_config: ${dataloader.dataset_config}
-        start: 2022-01-08
+        start: 2022-01-04
         end: null
 
 # =============================================================================
