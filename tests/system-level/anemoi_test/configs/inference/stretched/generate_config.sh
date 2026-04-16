@@ -8,7 +8,7 @@ export CHECKPOINT_PATH=$(find $CHECKPOINT_DIR -name "$CHECKPOINT_FILE")
 
 # Paths to training zarr datasets (used for boundary forcings time series)
 export LAM_DATASET=$RESULTS_DIR_DATASETS/meps-2p5km-20220101-20220101-6h-v1-testing.zarr
-export GLOBAL_DATASET=$RESULTS_DIR_DATASETS/aifs-ea-an-oper-0001-mars-o96-2017-2017-6h-v8-testing-larsfp.zarr
+export GLOBAL_DATASET=$RESULTS_DIR_DATASETS/aifs-ea-an-oper-0001-mars-o96-2022-2022-6h-v8-testing.zarr
 
 # Generate a config file for the checkpoint
 envsubst < $CONFIG_TEMPLATE > $OUTPUT_PATH
