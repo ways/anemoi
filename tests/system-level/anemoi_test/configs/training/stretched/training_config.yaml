@@ -199,10 +199,11 @@ training:
   max_epochs: 2
   max_steps: 10000
   validation_metrics: {}
-  lr:
-    rate: 3.75e-5
-    min: 8.0e-6
-    warmup: 1000
+  # Extra inputs are not permitted [type=extra_forbidden, input_value={'rate': 3.75e-05, 'min': 8e-06, 'warmup': 1000}, input_type=DictConfig]
+  # lr:
+  #   rate: 3.75e-5
+  #   min: 8.0e-6
+  #   warmup: 1000
   metrics:
     datasets:
       data:

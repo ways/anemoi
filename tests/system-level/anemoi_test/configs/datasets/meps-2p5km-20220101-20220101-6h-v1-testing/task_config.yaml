@@ -1,1 +1,9 @@
-anemoi_command: "anemoi-datasets create"
+# An ugly workaround for lack of variable substitution in anemoi-datasets
+# create. Create a copy of dataset_config.yaml, with a replaced variable
+# ($MEPS_20220101) for path to nc files and run using that file.
+anemoi_command: >-
+  bash -c 'export MEPS_20220101="/perm/nor1427/meps_dataset_20220101/*.nc" &&
+  TMP=$(mktemp --suffix=.yaml) &&
+  envsubst "\$MEPS_20220101" < "$1" > "$TMP" &&
+  anemoi-datasets create "$TMP" "$2" "$3";
+  RET=$?; rm -f "$TMP"; exit $RET' --
